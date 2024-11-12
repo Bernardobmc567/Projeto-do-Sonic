@@ -1,0 +1,200 @@
+body {
+    font-family: "Poppins", sans-serif;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100%;
+    overflow: hidden;
+}
+.video-container {
+    position: relative; 
+    width: 100vw; /* Largura total da viewport */
+    height: 100vh; /* Altura total da viewport */
+}
+
+.content {
+    display: none;
+}
+
+.content.activeV {
+    display: block;
+    position: fixed;
+}
+
+.content.activeI {
+    display: block;
+}
+
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 100vh;
+}
+
+.informacoes-container{
+    position: absolute;
+    width: 770px;
+    height: 400px;
+    left: 70px;
+}
+
+.informacoes {
+    display: none;
+}
+
+.informacoes.active {
+    display: block;
+}
+
+.informacoes .descricao {
+    width: 100%;
+    font-size: 27px;
+    color: #ffffff; 
+    line-height: 40px;
+    height: 300px;
+    overflow: auto;
+    padding-right: 10px;
+    margin-right: auto;
+}
+
+.informacoes h1 {
+    font-size: 70px;
+    color: #ffffff;
+    margin-bottom: 80px;
+    font-family: "NiseSegaSonic", sans-serif;
+    letter-spacing: 8px;
+    
+}
+
+.botoes {
+    position: absolute; /* Torna a posição dos botões relativa ao contêiner pai */
+    bottom: 20px; /* Distância do fundo do vídeo */
+    left: 50%; /* Alinha horizontalmente ao centro */
+    transform: translateX(-50%); /* Ajusta para centralizar */
+    display: flex;
+    gap: 20px; /* Espaçamento entre os botões */
+    z-index: 10; /* Assegura que os botões estejam acima do vídeo */
+}
+
+#botaoSom {
+    position: absolute; /* ou absolute, dependendo do layout */
+    z-index: 20; /* valor maior que o dos elementos do vídeo/imagem */
+    background-color: rgba(255, 255, 255, 0.7); /* Adicione um fundo se quiser */
+    border: none; /* Remova bordas, se necessário */
+    padding: 10px; /* Ajuste o padding conforme desejado */
+    cursor: pointer; /* Mantenha o cursor como pointer */
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da direita */
+    background: none;
+}
+
+#botaoSom img{
+    width: 70px; /* Ajuste a largura desejada */
+    height: 70px; /* Ajuste a altura desejada */
+}
+
+.botao.selected {
+    transform: scale(1.5); /* Aumenta o tamanho do botão selecionado */
+    transition: transform 0.3s; /* Mantém a transição suave */
+}
+
+.botoes .botao img {
+    width: 100%;
+    height: 100%;
+}
+
+.botao {
+    background-color: transparent;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;   
+    position: relative;
+    transition: transform 0.3s; /* Adiciona uma transição suave */
+}
+
+.botao:hover {
+    transform: scale(1.2); /* Aumenta o tamanho do botão */
+}
+
+@font-face{
+    font-family: "NiseSegaSonic";
+    src: url(../fontes/NiseSegaSonic.TTF);
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+
+@keyframes info-shadow {
+    0%{
+        color: #fff;
+    text-shadow: 0 0 12px var(--colorRed),
+    0 0 50px var(--colorRed),
+    0 0 100px var(--colorRed);
+    }
+}
+
+:root .informacoes .a2 {
+    --colorBlack: #040305;
+    --colorRed: rgb(182, 3, 3);
+    --colorGrey: rgb(87, 87, 87);
+}
+
+.informacoes .a2{
+    color: var(--colorGrey);
+    text-shadow: 0 0 18px var(--colorRed),
+    0 0 50px var(--colorRed),
+    0 0 100px var(--colorRed);
+}
+
+main:after{
+    content: "";
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 1) 10%, 
+    rgba(0, 0, 0, 0.05926120448179273) 50%, rgba(0, 0, 0, 1) 90%);
+    z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+    .informacoes-container{
+        width: 78%;
+        text-align: center;
+    }
+    .informacoes h1{
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .informacoes-container{
+        width: 70%;
+        text-align: center;
+    }
+    .informacoes h1{
+        font-size: 40px;
+    }
+}
+
